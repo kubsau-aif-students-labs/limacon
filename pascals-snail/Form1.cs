@@ -31,7 +31,7 @@ namespace pascals_snail
                 bACosI = b + a * Math.Cos(i);
                 x = bACosI * Math.Cos(i);
                 y = bACosI * Math.Sin(i);
-                points.Add(new Point((int)y + offset, (int)x + offset));
+                points.Add(new Point((int)x + offset, (int)y + offset));
             }
             drawAxis(graphics);
             graphics.DrawCurve(greenPen, points.ToArray());
@@ -40,8 +40,17 @@ namespace pascals_snail
         void drawAxis(Graphics graphics)
         {
             Pen blackPen = new Pen(Color.Black);
+            Font font = new Font("Courier", 10);
+            SolidBrush brush = new SolidBrush(Color.Black);
             graphics.DrawLine(blackPen, 20, offset, offset * 2 - 20, offset);
             graphics.DrawLine(blackPen, offset, 20, offset, offset * 2 - 20);
+            graphics.DrawLine(blackPen, offset * 2 - 20, offset,
+                offset * 2 - 30, offset - 5);
+            graphics.DrawLine(blackPen, offset * 2 - 20, offset,
+                offset * 2 - 30, offset + 5);
+            graphics.DrawLine(blackPen, offset, 20, offset - 5, 30);
+            graphics.DrawLine(blackPen, offset, 20, offset + 5, 30);
+            graphics.DrawString("0", font, brush, offset + 3, offset + 3);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)

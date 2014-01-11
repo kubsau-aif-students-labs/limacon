@@ -78,7 +78,7 @@
             this.aSpinBox.Size = new System.Drawing.Size(120, 20);
             this.aSpinBox.TabIndex = 3;
             this.aSpinBox.Value = new decimal(new int[] {
-            30,
+            100,
             0,
             0,
             0});
@@ -96,7 +96,7 @@
             this.bSpinBox.Size = new System.Drawing.Size(120, 20);
             this.bSpinBox.TabIndex = 4;
             this.bSpinBox.Value = new decimal(new int[] {
-            10,
+            60,
             0,
             0,
             0});
