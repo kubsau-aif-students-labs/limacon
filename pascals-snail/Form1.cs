@@ -34,7 +34,6 @@ namespace pascals_snail
                 points.Add(new Point((int)y * scale + offset, (int)x * scale + offset));
             }
             graphics.DrawCurve(blackPen, points.ToArray());
-            double r = b - a * Math.Cos(1.6180339887);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
