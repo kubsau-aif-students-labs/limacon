@@ -11,6 +11,8 @@ namespace pascals_snail
 {
     public partial class Form1 : Form
     {
+        public int offset = 225;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,12 +20,10 @@ namespace pascals_snail
 
         void drawCurve(Graphics graphics, int a, int b)
         {
-            Pen blackPen = new Pen(Color.Black);
+            Pen greenPen = new Pen(Color.Green);
             double x;
             double y;
             double bACosI;
-            int offset = 225;
-            int scale = 1;
             double twoPi = Math.PI * 2;
             List<Point> points = new List<Point>();
             for (double i = 0; i < twoPi; i += 0.001)
@@ -31,9 +31,17 @@ namespace pascals_snail
                 bACosI = b + a * Math.Cos(i);
                 x = bACosI * Math.Cos(i);
                 y = bACosI * Math.Sin(i);
-                points.Add(new Point((int)y * scale + offset, (int)x * scale + offset));
+                points.Add(new Point((int)y + offset, (int)x + offset));
             }
-            graphics.DrawCurve(blackPen, points.ToArray());
+            drawAxis(graphics);
+            graphics.DrawCurve(greenPen, points.ToArray());
+        }
+
+        void drawAxis(Graphics graphics)
+        {
+            Pen blackPen = new Pen(Color.Black);
+            graphics.DrawLine(blackPen, 20, offset, offset * 2 - 20, offset);
+            graphics.DrawLine(blackPen, offset, 20, offset, offset * 2 - 20);
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
